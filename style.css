@@ -1,0 +1,324 @@
+ :root {
+      --bg:        #1a1a1a;
+      --card:      #242424;
+      --green:     #6b7c3e;
+      --green-lt:  #8fa04e;
+      --cream:     #e8dfc8;
+      --muted:     #a09880;
+      --border:    #3a3a2a;
+      --accent:    #c9b96e;
+      --gap:       20px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Space Mono', monospace;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    /* ── MAIN GRID ─────────────────────────────────────────────── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      grid-template-rows: auto auto auto;
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    /* ── HEADER — spans full width ─────────────────────────────── */
+    .header {
+      grid-column: 1 / -1;
+      grid-row: 1;
+
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto auto;
+      column-gap: 28px;
+      row-gap: 6px;
+      align-items: center;
+
+      background: var(--green);
+      border-radius: 4px;
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      right: -30px; top: -30px;
+      width: 220px; height: 220px;
+      border: 2px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      right: 20px; top: 20px;
+      width: 120px; height: 120px;
+      border: 2px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+    }
+
+    .avatar {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: var(--green-lt);
+      border: 3px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--bg);
+      letter-spacing: -1px;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .header-name {
+      grid-column: 2;
+      grid-row: 1;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      z-index: 1;
+    }
+
+    .header-title {
+      grid-column: 2;
+      grid-row: 2;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      z-index: 1;
+    }
+
+    .header-contact {
+      grid-column: 3;
+      grid-row: 1 / 3;
+      text-align: right;
+      font-size: .68rem;
+      color: rgba(255,255,255,.75);
+      line-height: 1.9;
+      z-index: 1;
+    }
+    .header-contact a { color: var(--accent); text-decoration: none; }
+
+    /* ── LEFT COLUMN ───────────────────────────────────────────── */
+    .left {
+      grid-column: 1;
+      grid-row: 2 / 5;
+
+      display: grid;
+      grid-template-rows: auto auto auto;
+      row-gap: var(--gap);
+      align-content: start;
+    }
+
+    /* ── RIGHT COLUMN ──────────────────────────────────────────── */
+    .right {
+      grid-column: 2;
+      grid-row: 2 / 5;
+
+      display: grid;
+      grid-template-rows: auto auto auto;
+      row-gap: var(--gap);
+      align-content: start;
+    }
+
+    /* ── PLAYLISTS / SKILLS BAR — full width ───────────────────── */
+    .skills-bar {
+      grid-column: 1 / -1;
+      grid-row: 5;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    /* ── CARD ──────────────────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px 24px;
+    }
+
+    .card-label {
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    /* ── SOBRE MIM ─────────────────────────────────────────────── */
+    .sobre p {
+      font-size: .78rem;
+      line-height: 1.75;
+      color: var(--cream);
+    }
+
+    /* ── FORMAÇÃO ──────────────────────────────────────────────── */
+    .edu-item { margin-bottom: 14px; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-degree {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--cream);
+    }
+    .edu-inst { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+    .edu-year {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: .65rem;
+      background: var(--green);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    /* ── OBJETIVOS ─────────────────────────────────────────────── */
+    .objetivos p {
+      font-size: .78rem;
+      line-height: 1.75;
+      color: var(--cream);
+    }
+
+    /* ── COMPETÊNCIAS LIST ─────────────────────────────────────── */
+    .comp-list {
+      list-style: none;
+      display: grid;
+      row-gap: 8px;
+    }
+    .comp-list li {
+      font-size: .76rem;
+      color: var(--cream);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .comp-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ── FERRAMENTAS TAGS ──────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: .65rem;
+      background: var(--green);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 2px;
+      letter-spacing: .05em;
+    }
+
+    /* ── SKILL TILES (bottom bar) ──────────────────────────────── */
+    .skill-tile {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: border-color .2s;
+    }
+    .skill-tile:hover { border-color: var(--accent); }
+    .skill-tile .icon { font-size: 1.4rem; }
+    .skill-tile .name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .8rem;
+      color: var(--cream);
+    }
+    .skill-tile .sub {
+      font-size: .65rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────────────── */
+    .footer {
+      grid-column: 1 / -1;
+      grid-row: 6;
+      text-align: center;
+      font-size: .65rem;
+      color: var(--muted);
+      letter-spacing: .12em;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── FRIEND ACTIVITY style (mini status cards) ─────────────── */
+    .status-row {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      align-items: center;
+      column-gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .status-row:last-child { border-bottom: none; }
+    .status-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .status-text { font-size: .72rem; color: var(--cream); line-height: 1.4; }
+    .status-text strong { font-size: .8rem; display: block; }
+    .status-time { font-size: .65rem; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      .page {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .header {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .header-contact {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        text-align: left;
+        margin-top: 10px;
+      }
+      .left, .right { grid-column: 1; grid-row: auto; }
+    }
